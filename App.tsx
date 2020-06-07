@@ -7,65 +7,30 @@
  *
  * @format
  */
-
 import React from 'react';
 import {
   SafeAreaView,
   StyleSheet,
   ScrollView,
   View,
-  Text,
-  StatusBar,
-  Image,
   Dimensions,
 } from 'react-native';
 
-import { Header, Colors } from 'react-native/Libraries/NewAppScreen';
+import { Colors } from 'react-native/Libraries/NewAppScreen';
 import { ArtistDetail } from './src/components/ArtistDetail/ArtistDetail';
-import { BandImage, ImageGallery } from './src/components/ArtistDetail/ImageGallery';
-import buddyListImages from './src/data/Bands';
-import BuddyList from './src/data/Bands';
-
-declare const global: { HermesInternal: null | {} };
-
-const App = () => {
-  return (
-    <>
-      <StatusBar barStyle="dark-content" />
-      <SafeAreaView>
-        <ScrollView
-          nestedScrollEnabled={true}
-          contentInsetAdjustmentBehavior="automatic"
-          style={styles.scrollView}>
-          <Header />
-          {global.HermesInternal == null ? null : (
-            <View style={styles.engine}>
-              <Text style={styles.footer}>Engine: Hermes</Text>
-            </View>
-          )}
-          <View style={styles.body}>
-            {/* Detail */}
-            <View style={styles.sectionContainer}>
-              {ArtistDetail(BuddyList)}
-            </View>
-          </View>
-        </ScrollView>
-      </SafeAreaView>
-    </>
-  );
-};
-
-let buddylist = {
-  name: "buddylist",
-  city: "Richmond",
-  genre: "Buttgaze"
-}
+import { SearchBarArtie } from './src/components/SearchBar'
+import { BuddyList } from './src/data/Bands';
 
 const window = Dimensions.get('window')
 
 const styles = StyleSheet.create({
+  searchBar: {
+    width: window.width
+  },
+
   scrollView: {
     backgroundColor: Colors.lighter,
+    height: window.height
   },
   engine: {
     position: 'absolute',
@@ -102,4 +67,21 @@ const styles = StyleSheet.create({
   },
 });
 
-export default App;
+export const App = () => {
+  return (
+    <SafeAreaView>
+      <SearchBarArtie />
+      <ScrollView
+        nestedScrollEnabled={true}
+        contentInsetAdjustmentBehavior="automatic"
+        style={styles.scrollView}>
+        <View style={styles.body}>
+          {/* Detail */}
+          <View style={styles.sectionContainer}>
+            {ArtistDetail(BuddyList)}
+          </View>
+        </View>
+      </ScrollView>
+    </SafeAreaView>
+  );
+};
