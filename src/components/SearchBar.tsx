@@ -17,7 +17,7 @@ export class SearchBarArtie extends React.Component {
       <SearchBar
         placeholder="Type Here..."
         onChangeText={this.updateSearch}
-        platform="ios"
+        platform="android"
         value={search}
       />
     );
