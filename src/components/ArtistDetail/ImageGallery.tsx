@@ -35,5 +35,3 @@ export const ImageGallery: React.FC<BandImage[]> = (uris) => {
         />
     )
 }
-
-export default { ImageGallery }

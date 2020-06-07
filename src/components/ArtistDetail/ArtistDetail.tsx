@@ -1,12 +1,13 @@
 import React from 'react'
-import { Text, View, FlatList, StyleSheet } from 'react-native'
+import { Text, View, StyleSheet} from 'react-native'
 import { BandImage, ImageGallery } from './ImageGallery';
-import { forInStatement } from '@babel/types';
+import { Bio } from './Bio';
 
 export type Artist = {
   name: string,
   city: string,
   genre: string,
+  bio: string
   images: BandImage[]
 }
 
@@ -15,18 +16,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     alignSelf: 'center'
   },
-  buttons: {
-    flexDirection: 'row',
-    minHeight: 70,
-    alignItems: 'stretch',
-    alignSelf: 'center',
-    borderWidth: 5
-  },
-  button: {
-    flex: 1,
-    paddingVertical: 0
-  },
-  greeting: {
+  header: {
+    paddingBottom: 12,
     fontSize: 20,
     color: 'red',
     fontWeight: 'bold'
@@ -36,11 +27,9 @@ const styles = StyleSheet.create({
 export const ArtistDetail: React.FC<Artist> = (artist) => {
   return (
     <View style={styles.root}>
-
-      <Text style={styles.greeting}>{artist.name}</Text>
-      <Text style={styles.greeting}>{artist.city}</Text>
-      <Text style={styles.greeting}>{artist.genre}</Text>
+      <Text style={styles.header}>{artist.name} | {artist.city} | {artist.genre}</Text>
       {ImageGallery(artist.images)}
+      {Bio(artist.bio)}
     </View>
   )
 }
