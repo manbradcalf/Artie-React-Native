@@ -16,21 +16,24 @@ import {
   Dimensions,
 } from 'react-native';
 
-import { Colors } from 'react-native/Libraries/NewAppScreen';
-import { ArtistDetail } from './src/components/ArtistDetail/ArtistDetail';
-import { SearchBarArtie } from './src/components/SearchBar'
-import { BuddyList } from './src/data/Bands';
+import {HomeScreen} from './src/components/Home';
+import {NavigationContainer} from '@react-navigation/native';
+import {Colors} from 'react-native/Libraries/NewAppScreen';
+import {ArtistDetail} from './src/components/ArtistDetail/ArtistDetail';
+import {SearchBarArtie} from './src/components/SearchBar';
+import {BuddyList} from './src/data/Bands';
+import {createStackNavigator} from '@react-navigation/stack';
 
-const window = Dimensions.get('window')
+const window = Dimensions.get('window');
 
 const styles = StyleSheet.create({
   searchBar: {
-    width: window.width
+    width: window.width,
   },
 
   scrollView: {
     backgroundColor: Colors.lighter,
-    height: window.height
+    height: window.height,
   },
   engine: {
     position: 'absolute',
@@ -66,22 +69,39 @@ const styles = StyleSheet.create({
     textAlign: 'right',
   },
 });
+const Stack = createStackNavigator();
 
-export const App = () => {
+function MyStack() {
   return (
-    <SafeAreaView>
-      <SearchBarArtie />
-      <ScrollView
-        nestedScrollEnabled={true}
-        contentInsetAdjustmentBehavior="automatic"
-        style={styles.scrollView}>
-        <View style={styles.body}>
-          {/* Detail */}
-          <View style={styles.sectionContainer}>
-            {ArtistDetail(BuddyList)}
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="HomeScreen" component={HomeScreen} />
+        <Stack.Screen name="Artist" component={ArtistDetail} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+}
+export const App = () => {
+  return MyStack();
+};
+
+export const App2 = () => {
+  return (
+    <NavigationContainer>
+      <SafeAreaView>
+        <SearchBarArtie />
+        <ScrollView
+          nestedScrollEnabled={true}
+          contentInsetAdjustmentBehavior="automatic"
+          style={styles.scrollView}>
+          <View style={styles.body}>
+            {/* Detail */}
+            <View style={styles.sectionContainer}>
+              {ArtistDetail(BuddyList)}
+            </View>
           </View>
-        </View>
-      </ScrollView>
-    </SafeAreaView>
+        </ScrollView>
+      </SafeAreaView>
+    </NavigationContainer>
   );
 };

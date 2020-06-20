@@ -1,6 +1,8 @@
-import {Artist} from 'src/components/ArtistDetail/ArtistDetail';
+import {View, Text, TouchableOpacity} from 'react-native';
+import React from 'react';
+import {Artist} from './ArtistDetail/ArtistDetail';
 
-export const BuddyList: Artist = {
+const BuddyList: Artist = {
   city: 'Richmond',
   genre: 'Butt Gaze',
   name: 'Buddy List',
@@ -48,3 +50,17 @@ export const BuddyList: Artist = {
   ],
 };
 
+export const HomeScreen = ({navigation}) => {
+  return (
+    <View>
+      <TouchableOpacity
+        onPress={() => {
+          // Navigate to Artist page, passing "artist" data defined above as
+          // BuddyList
+          navigation.navigate('Artist', {artist: BuddyList});
+        }}>
+        <Text>Click Here</Text>
+      </TouchableOpacity>
+    </View>
+  );
+};
