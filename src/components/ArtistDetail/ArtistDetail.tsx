@@ -24,8 +24,9 @@ const styles = StyleSheet.create({
   },
 });
 
-export const ArtistDetail: React.FC<Artist> = ({route, params}) => {
+export const ArtistDetail: React.FC<Artist> = (route) => {
   const {artist} = route.params;
+  const {navigation} = route.params
   return (
     <View style={styles.root}>
       <Text style={styles.header}>

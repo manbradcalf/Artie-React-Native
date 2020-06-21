@@ -1,5 +1,6 @@
 import React from 'react';
 import {Text, View, StyleSheet} from 'react-native';
+import {TouchableOpacity} from 'react-native-gesture-handler';
 
 const styles = StyleSheet.create({
   root: {
@@ -18,11 +19,17 @@ const styles = StyleSheet.create({
   },
 });
 
-export const Bio: React.FC<string> = (bioText) => {
+export const Bio: React.FC<string> = ({route}) => {
+  const {bioText} = route.params;
   return (
-    <View style={styles.root}>
-      <Text style={styles.headerText}>Biography</Text>
-      <Text style={styles.infoText}>{bioText}</Text>
-    </View>
+    <TouchableOpacity
+      onPress={() => {
+        navigation.navigate('Dummy', {origin: 'bio'});
+      }}>
+      <View style={styles.root}>
+        <Text style={styles.headerText}>Biography</Text>
+        <Text style={styles.infoText}>{bioText}</Text>
+      </View>
+    </TouchableOpacity>
   );
 };
