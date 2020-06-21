@@ -2,6 +2,7 @@ import React from 'react';
 import {Text, View, StyleSheet} from 'react-native';
 import {BandImage, ImageGallery} from './ImageGallery';
 import {Bio} from './Bio';
+import {TouchableOpacity} from 'react-native-gesture-handler';
 
 export type Artist = {
   name: string;
@@ -24,14 +25,19 @@ const styles = StyleSheet.create({
   },
 });
 
-export const ArtistDetail: React.FC<Artist> = ({route, params}) => {
+export const ArtistDetail: React.FC<Artist> = ({route, navigation}) => {
   const {artist} = route.params;
   return (
     <View style={styles.root}>
       <Text style={styles.header}>
         {artist.name} | {artist.city} | {artist.genre}
       </Text>
-      {Bio(artist.bio)}
+      <TouchableOpacity
+        onPress={() => {
+          navigation.navigate('Dummy', {origin: 'Bio'});
+        }}>
+        {Bio(artist.bio)}
+      </TouchableOpacity>
       {ImageGallery(artist.images)}
     </View>
   );
