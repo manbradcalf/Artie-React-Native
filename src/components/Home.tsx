@@ -57,6 +57,7 @@ export const HomeScreen = ({navigation}) => {
         onPress={() => {
           // Navigate to Artist page, passing "artist" data defined above as
           // BuddyList
+          console.log('clicked on button on home page');
           navigation.navigate('Artist', {artist: BuddyList});
         }}>
         <Text>Click Here</Text>

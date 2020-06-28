@@ -24,6 +24,8 @@ import {SearchBarArtie} from './src/components/SearchBar';
 import {BuddyList} from './src/data/Bands';
 import {createStackNavigator} from '@react-navigation/stack';
 import {Dummy} from './src/components/Dummy';
+import {Hello} from './src/components/Hello';
+import {ImageGallery} from './src/components/ArtistDetail/ImageGallery';
 
 const window = Dimensions.get('window');
 
@@ -79,6 +81,8 @@ function MyStack() {
         <Stack.Screen name="HomeScreen" component={HomeScreen} />
         <Stack.Screen name="Artist" component={ArtistDetail} />
         <Stack.Screen name="Dummy" component={Dummy} />
+        <Stack.Screen name="Hello" component={Hello} />
+        <Stack.Screen name="ImageGallery" component={ImageGallery} />
       </Stack.Navigator>
     </NavigationContainer>
   );

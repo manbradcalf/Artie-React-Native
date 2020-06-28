@@ -1,5 +1,6 @@
 import React from 'react';
 import {Dimensions, StyleSheet, Image, FlatList} from 'react-native';
+import {TouchableOpacity} from 'react-native-gesture-handler';
 
 const windowWidth = Dimensions.get('window').width;
 
@@ -17,17 +18,27 @@ export type BandImage = {
 };
 
 // The Image Gallery in the form of a flatlist
-export const ImageGallery: React.FC<BandImage[]> = (uris) => {
+export const ImageGallery: React.FC<BandImage[]> = (uris, navigation) => {
   return (
     <FlatList
       numColumns={3}
       data={uris}
       renderItem={(bandImage) => {
         return (
-          <Image source={{uri: bandImage.item.url}} style={styles.imageItem} />
+          <TouchableOpacity
+            onPress={() => {
+              console.log('Something i clicked');
+              navigation.push('Hello', {
+                props: {name: 'Ben', enthusiasmLevel: 10},
+              });
+            }}>
+            <Image
+              source={{uri: bandImage.item.url}}
+              style={styles.imageItem}
+            />
+          </TouchableOpacity>
         );
       }}
     />
   );
 };
-

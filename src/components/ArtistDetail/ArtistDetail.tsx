@@ -34,11 +34,11 @@ export const ArtistDetail: React.FC<Artist> = ({route, navigation}) => {
       </Text>
       <TouchableOpacity
         onPress={() => {
-          navigation.navigate('Dummy', {origin: 'Bio'});
+          navigation.push('Dummy', {origin: 'Bio'});
         }}>
         {Bio(artist.bio)}
       </TouchableOpacity>
-      {ImageGallery(artist.images)}
+      {ImageGallery(artist.images, navigation)}
     </View>
   );
 };

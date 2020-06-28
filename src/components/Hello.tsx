@@ -7,10 +7,12 @@ export interface Props {
   enthusiasmLevel?: number;
 }
 
-const Hello: React.FC<Props> = (props) => {
+export const Hello: React.FC<Props> = ({route}) => {
+  const props = route.params.props; 
   const [enthusiasmLevel, setEnthusiasmLevel] = React.useState(
     props.enthusiasmLevel,
   );
+  console.log('props is ' + enthusiasmLevel);
 
   const onIncrement = () => setEnthusiasmLevel((enthusiasmLevel || 0) + 1);
   const onDecrement = () => setEnthusiasmLevel((enthusiasmLevel || 0) - 1);
@@ -70,4 +72,3 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Hello;
