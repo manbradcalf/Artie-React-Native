@@ -4,7 +4,7 @@ import {TouchableOpacity} from 'react-native-gesture-handler';
 
 const windowWidth = Dimensions.get('window').width;
 
-const styles = StyleSheet.create({
+export const styles = StyleSheet.create({
   imageItem: {
     width: windowWidth / 3 - 20,
     height: windowWidth / 3 - 20,
@@ -29,7 +29,11 @@ export const ImageGallery: React.FC<BandImage[]> = (uris, navigation) => {
             onPress={() => {
               console.log('Something i clicked');
               navigation.push('Hello', {
-                props: {name: 'Ben', enthusiasmLevel: 10},
+                props: {
+                  name: 'Ben',
+                  enthusiasmLevel: 10,
+                  img: bandImage.item.url,
+                },
               });
             }}>
             <Image
