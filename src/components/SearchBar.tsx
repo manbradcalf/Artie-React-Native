@@ -1,4 +1,4 @@
-import { SearchBar } from 'react-native-elements';
+import {SearchBar} from 'react-native-elements';
 import React from 'react';
 
 export class SearchBarArtie extends React.Component {
@@ -7,11 +7,11 @@ export class SearchBarArtie extends React.Component {
   };
 
   updateSearch = (search: string) => {
-    this.setState({ search });
+    this.setState({search});
   };
 
   render() {
-    const { search } = this.state;
+    const {search} = this.state;
 
     return (
       <SearchBar
