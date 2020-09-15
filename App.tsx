@@ -33,7 +33,6 @@ const styles = StyleSheet.create({
   searchBar: {
     width: window.width,
   },
-
   scrollView: {
     backgroundColor: Colors.lighter,
     height: window.height,
@@ -87,27 +86,7 @@ function MyStack() {
     </NavigationContainer>
   );
 }
+
 export const App = () => {
   return MyStack();
-};
-
-export const App2 = () => {
-  return (
-    <NavigationContainer>
-      <SafeAreaView>
-        <SearchBarArtie />
-        <ScrollView
-          nestedScrollEnabled={true}
-          contentInsetAdjustmentBehavior="automatic"
-          style={styles.scrollView}>
-          <View style={styles.body}>
-            {/* Detail */}
-            <View style={styles.sectionContainer}>
-              {ArtistDetail(BuddyList)}
-            </View>
-          </View>
-        </ScrollView>
-      </SafeAreaView>
-    </NavigationContainer>
-  );
 };
